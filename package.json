@@ -1,0 +1,13 @@
+{
+  "name": "fitcoach-proxy",
+  "version": "1.0.0",
+  "description": "Proxy server for FitCoach AI — hides Groq & Whoop API keys",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}
