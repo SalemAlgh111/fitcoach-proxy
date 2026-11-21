@@ -56,8 +56,8 @@ app.get("/api/whoop/auth", (_req, res) => {
   const clientId = process.env.WHOOP_CLIENT_ID;
   const redirectUri = "https://fitcoach-proxy.onrender.com/api/whoop/callback";
   const scopes = "read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement";
-  res.redirect("https://api.prod.whoop.com/oauth/oauth2/auth?client_id=" + clientId + "&redirect_uri=" + encodeURIComponent(redirectUri) + "&response_type=code&scope=" + encodeURIComponent(scopes));
-});
+   const state = Math.random().toString(36).substring(2, 12);
+  res.redirect("https://api.prod.whoop.com/oauth/oauth2/auth?client_id=" + clientId + "&redirect_uri=" + encodeURIComponent(redirectUri) + "&response_type=code&scope=" + encodeURIComponent(scopes + " offline") + "&state=" + state);
 
 app.get("/api/whoop/callback", async (req, res) => {
   const code = req.query.code;
